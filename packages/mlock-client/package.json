@@ -1,6 +1,6 @@
 {
   "name": "mlock-client",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "Multi-resource distributed lock client for Node.js",
   "author": {
     "name": "Liang",
