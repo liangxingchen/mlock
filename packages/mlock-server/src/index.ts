@@ -118,7 +118,7 @@ export default class Server {
         this.sendError(socket, 'auth timeout!');
       }, 10000);
       let buffer: PacketWrapper;
-      socket.on('data', (chunk) => {
+      socket.on('data', (chunk: Buffer) => {
         if (!buffer) {
           buffer = new PacketWrapper();
           let firstCmd = chunk.toString().trim();
@@ -214,7 +214,7 @@ export default class Server {
     let list = text.split(' ');
     let args = ([socket] as any[]).concat(list.slice(1));
     let cmd = list[0].toLowerCase();
-    if (!socket.id && cmd !== 'connect') return this.sendError(socket, 'shoule connect first!');
+    if (!socket.id && cmd !== 'connect') return this.sendError(socket, 'should connect first!');
     switch (cmd) {
       case 'connect':
         // @ts-ignore

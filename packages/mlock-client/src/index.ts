@@ -49,6 +49,9 @@ export default class Client {
       if (parseInt(url.searchParams.get('tolerate'))) {
         this.options.tolerate = parseInt(url.searchParams.get('tolerate'));
       }
+      if (parseInt(url.searchParams.get('ttl'))) {
+        this.options.ttl = parseInt(url.searchParams.get('ttl'));
+      }
       if (url.searchParams.get('prefix')) {
         this.options.prefix = url.searchParams.get('prefix');
       }
@@ -126,7 +129,7 @@ export default class Client {
   }
 
   ping(): Promise<'pong'> {
-    return this.socket.ping() as any;
+    return this.socket.ping();
   }
 
   destroy() {
@@ -157,7 +160,7 @@ class MultiplexSocket extends events.EventEmitter {
   locks: {
     [lockId: string]: Client;
   };
-  pingTimer?: NodeJS.Timer;
+  pingTimer?: NodeJS.Timeout;
 
   constructor(host: string, port: number, id?: string, debug?: boolean) {
     super();
@@ -244,7 +247,7 @@ class MultiplexSocket extends events.EventEmitter {
       case 'connected':
         this.connected = true;
         if (!this.pingTimer) {
-          this.pingTimer = setInterval(this.ping, 20000);
+          this.pingTimer = setInterval(() => this.ping(), 20000);
         }
         this._onConnect();
         break;
@@ -381,13 +384,15 @@ class MultiplexSocket extends events.EventEmitter {
   }
 
   async status() {
+    if (!this.connected) await this.connect();
     let status = await this.send('status', []);
     return JSON.parse(status);
   }
 
-  ping = () => {
-    return this.send('ping', []);
-  };
+  async ping(): Promise<'pong'> {
+    if (!this.connected) await this.connect();
+    return (await this.send('ping', [])) as any;
+  }
 }
 
 function generateId() {

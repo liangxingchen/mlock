@@ -1,7 +1,7 @@
-FROM node:14.5.0-alpine3.11
+FROM registry.cn-hangzhou.aliyuncs.com/miaomo/node:24.13.0
 
-RUN npm install -g mlock-server@0.1.10
+RUN npm install -g mlock-server@0.2.0
 
-CMD mlock-server
+ENTRYPOINT ["mlock-server"]
 
 EXPOSE 12340

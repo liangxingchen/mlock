@@ -2,25 +2,31 @@
   "name": "mlock-dev",
   "private": true,
   "version": "0.1.0",
-  "description": "Maichong lock",
+  "description": "mlock",
   "main": "index.js",
   "scripts": {
     "cli": "node scripts/cli.js",
+    "build": "lerna run build",
     "prepublish": "lerna run build; node test/index.js",
     "test": "node test/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maichong/mlock.git"
+    "url": "git+https://github.com/liangxingchen/mlock.git"
   },
-  "author": "Liang <liang@maichong.it> (https://github.com/liangxingchen)",
+  "author": {
+    "name": "Liang",
+    "email": "liang@miaomo.cn",
+    "url": "https://github.com/liangxingchen"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maichong/mlock/issues"
+    "url": "https://github.com/liangxingchen/mlock/issues"
   },
-  "homepage": "https://github.com/maichong/mlock#readme",
-  "dependencies": {
-    "lerna": "^3.22.1",
+  "homepage": "https://github.com/liangxingchen/mlock#readme",
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "lerna": "^9.0.3",
     "packet-wrapper": "^0.1.0"
   }
 }

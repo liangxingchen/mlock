@@ -1,9 +1,13 @@
 {
   "name": "mlock-client",
   "version": "0.1.10",
-  "description": "Maichong lock client for NodeJs",
-  "author": "Liang <liang@maichong.it> (https://github.com/liangxingchen)",
-  "homepage": "https://github.com/maichong/mlock/tree/master/packages/mlock#readme",
+  "description": "Multi-resource distributed lock client for Node.js",
+  "author": {
+    "name": "Liang",
+    "email": "liang@miaomo.cn",
+    "url": "https://github.com/liangxingchen"
+  },
+  "homepage": "https://github.com/liangxingchen/mlock/tree/master/packages/mlock#readme",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "index.d.ts",
@@ -13,19 +17,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maichong/mlock.git"
+    "url": "git+https://github.com/liangxingchen/mlock.git"
   },
   "scripts": {
     "build": "tsc"
   },
   "bugs": {
-    "url": "https://github.com/maichong/mlock/issues"
+    "url": "https://github.com/liangxingchen/mlock/issues"
   },
   "dependencies": {
     "packet-wrapper": "^0.1.0"
   },
   "devDependencies": {
-    "typescript": "^4.1.3"
-  },
-  "gitHead": "e6bb1d1372f3fc606c61dcb51c6ebaaf41a490e3"
+    "typescript": "^5.9.3"
+  }
 }
